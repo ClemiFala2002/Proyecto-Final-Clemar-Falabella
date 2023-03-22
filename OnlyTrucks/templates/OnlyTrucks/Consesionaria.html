@@ -1,0 +1,21 @@
+{% extends 'OnlyTrucks/base.html' %}
+{% load static %}
+
+{% block main %}
+
+<h1>Ingrese un Concesionario</h1>
+
+<form action="{% url 'Agregar-Consesionaria' %}" method="post">
+    {% csrf_token %}
+    {{formc.as_p}}
+    <input type="submit" value="agregar">
+
+</form>
+
+<ul>
+{% for Concesionaria in Consesionaria %}
+<li>{{Concesionaria.id}} - {{ Concesionaria.Nombre_del_Consesionario }}</li>
+{% endfor %}
+</ul>
+
+{% endblock %}

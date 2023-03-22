@@ -1,0 +1,14 @@
+{% extends 'OnlyTrucks/base.html' %}
+{% load static %}
+
+{% block main %}
+
+<h1>Resultados de su Busqueda</h1>
+
+<ul>
+{% for Post in posts %}
+<li>{{Post.id}} - {{ Post.Modelo_de_su_Camion }} - {{Post.Año_de_Fabricacion}} - {{Post.Precio}}</li>
+{% endfor %}
+</ul>
+
+{% endblock %}

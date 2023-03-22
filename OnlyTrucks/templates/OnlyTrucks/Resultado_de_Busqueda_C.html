@@ -1,0 +1,14 @@
+{% extends 'OnlyTrucks/base.html' %}
+{% load static %}
+
+{% block main %}
+
+<h1>Resultados de su Busqueda</h1>
+
+<ul>
+    {% for Concesionaria in concesionaria %}
+    <li>{{Concesionaria.id}} - {{ Concesionaria.Nombre_del_Consesionario }}</li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
