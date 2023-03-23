@@ -1,6 +1,6 @@
 from django.db import models
 
-class Post(models.Model):
+class Camion(models.Model):
     Modelo_de_su_Camion = models.CharField(max_length=30)
     Marca_de_su_Camion = models.CharField(max_length=80)
     Año_de_Fabricacion = models.CharField(max_length=15)

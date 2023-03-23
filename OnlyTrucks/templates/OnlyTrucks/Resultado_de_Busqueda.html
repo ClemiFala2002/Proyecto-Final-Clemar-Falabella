@@ -6,8 +6,8 @@
 <h1>Resultados de su Busqueda</h1>
 
 <ul>
-{% for Post in posts %}
-<li>{{Post.id}} - {{ Post.Modelo_de_su_Camion }} - {{Post.Año_de_Fabricacion}} - {{Post.Precio}}</li>
+{% for Camion in Camiones %}
+<li>{{Camion.id}} - {{ Camion.Modelo_de_su_Camion }} - {{Camion.Año_de_Fabricacion}} - {{Camion.Precio}}</li>
 {% endfor %}
 </ul>
 

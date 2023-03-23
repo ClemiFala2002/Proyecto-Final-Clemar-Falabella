@@ -1,6 +1,6 @@
 from django.contrib import admin
-from OnlyTrucks.models import Post, Remolques, Concesionaria
+from OnlyTrucks.models import Camion, Remolques, Concesionaria
 
-admin.site.register(Post)
+admin.site.register(Camion)
 admin.site.register(Remolques)
 admin.site.register(Concesionaria)

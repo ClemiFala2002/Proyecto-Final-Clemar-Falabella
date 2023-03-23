@@ -1,38 +1,38 @@
 from django.shortcuts import render
-from OnlyTrucks.models import Post, Remolques, Concesionaria
-from OnlyTrucks.forms import PostForm, RemolquesForm, ConsesionariaForm
+from OnlyTrucks.models import Camion, Remolques, Concesionaria
+from OnlyTrucks.forms import CamionForm, RemolquesForm, ConsesionariaForm
 
 def index(request):
     return render(request, "OnlyTrucks/index.html")
 
-def Resultado_de_Busqueda(request):
+def Resultado_de_Camion(request):
     
-    posts = Post.objects.all()
-    return render(request, "OnlyTrucks/Resultado_de_Busqueda.html",{"posts": posts})
+    Camiones = Camion.objects.all()
+    return render(request, "OnlyTrucks/Resultado_de_Busqueda.html",{"Camiones": Camiones})
 
-def mostrar_post(request):
+def mostrar_Camion(request):
     
     context = {
-        "form": PostForm(),
-        "posts": Post.objects.all(),
+        "form": CamionForm(),
+        "Camiones": Camion.objects.all(),
     }
     
-    return render(request, "OnlyTrucks/admin_post.html", context )
+    return render(request, "OnlyTrucks/Camiones.html", context )
 
-def agregar_post(request):
-    post_form = PostForm(request.POST)
+def agregar_Camion(request):
+    post_form = CamionForm(request.POST)
     post_form.save()
     context = {
-        "form": PostForm(),
-        "posts": Post.objects.all(),
+        "form": CamionForm(),
+        "Camiones": Camion.objects.all(),
     }
     
-    return render(request, "OnlyTrucks/admin_post.html", context)
+    return render(request, "OnlyTrucks/Camiones.html", context)
 
-def buscar_post(request):
+def buscar_Camion(request):
     criterio= request.GET.get("criterio")
     context = {
-        "posts":Post.objects.filter(Modelo_de_su_Camion__icontains=criterio).all(),
+        "Camiones":Camion.objects.filter(Modelo_de_su_Camion__icontains=criterio).all(),
     }
     
     return render(request, "OnlyTrucks/Camiones.html", context)

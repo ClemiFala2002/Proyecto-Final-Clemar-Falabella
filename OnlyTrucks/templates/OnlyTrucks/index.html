@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block main %}
-<main>
+<main style="background-color:#515151;"> 
 
   <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
@@ -14,7 +14,7 @@
               <div class="carousel-caption text-start">
                 <h1>Camiones 0KM</h1>
                 <p>vea nuestro catalogo</p>
-                <p><a class="btn btn-lg btn-primary" href="{%url 'Resultado Busqueda'%}">Ver Camiones</a></p>
+                <p><a class="btn btn-lg btn-primary" href="{%url 'Resultado Camion'%}">Ver Camiones</a></p>
               </div>
             </div>
           </div>
@@ -59,15 +59,15 @@
     
       <div class="col-lg-4">
         <img src="{% static 'OnlyTrucks/assets/fiat-619.jpg' %}" height="144" width="144">
-        <h2>Camiones Usados</h2>
-        <p>Venda su Camion pulsando aqui</p>
-        <p><a class="btn btn-secondary" href="{%url 'Busqueda'%}">Vender »</a></p>
+        <h2 style="color: white">Camiones Usados</h2>
+        <p style="color: white">Venda su Camion pulsando aqui</p>
+        <p><a class="btn btn-secondary" href="{%url 'Camion'%}">Vender »</a></p>
       </div><!-- /.col-lg-4 -->
     
       <div class="col-lg-4">
         <img src="{% static 'OnlyTrucks/assets/acoplado-3ejes-mixto.jpg' %}" height="144" width="144">
-        <h2>Acoplados Usados</h2>
-        <p>Venda su acoplado pulsando aqui</p>
+        <h2 style="color: white">Acoplados Usados</h2>
+        <p style="color: white">Venda su acoplado pulsando aqui</p>
         <p><a class="btn btn-secondary" href="{%url 'Remolque'%}">Vender »</a></p>
       </div><!-- /.col-lg-4 -->
       
@@ -81,7 +81,7 @@
 
     <div class="row featurette">
       <div class="col-md-7 order-md-2">
-        <h2 class="featurette-heading">Consecionarias</h2>
+        <h2 class="featurette-heading">Concesionarias</h2>
         <p class="lead">Estamos en cada punto del pais</p>
         <p><a class="btn btn-secondary" href="{%url 'Resultado BusquedaC'%}">Ver Concesionarios »</a></p>
       </div>

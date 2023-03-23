@@ -1,9 +1,9 @@
 from django import forms
-from OnlyTrucks.models import Post, Remolques, Concesionaria
+from OnlyTrucks.models import Camion, Remolques, Concesionaria
 
-class PostForm(forms.ModelForm):
+class CamionForm(forms.ModelForm):
     class Meta:
-        model=Post
+        model=Camion
         fields= '__all__'
 
 class RemolquesForm(forms.ModelForm):
