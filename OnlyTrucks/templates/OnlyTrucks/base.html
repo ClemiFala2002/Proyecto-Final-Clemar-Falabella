@@ -67,7 +67,7 @@
             </a>
            
              <ul class="dropdown-menu dropdown-menu-dark rounded-3 mx-0 border-0 shadow w-220px">
-                <li><a class="dropdown-item rounded-2" href="{%url 'Camion' %}">Camiones</a></li>
+                <li><a class="dropdown-item rounded-2" href="{%url 'Camion-create' %}">Camiones</a></li>
                 <li><a class="dropdown-item rounded-2" href="{%url 'Remolque'%}">Acoplados</a></li>
                 <li><a class="dropdown-item rounded-2" href="{%url 'Consesionaria1'%}">Concesionarios</a></li>
                 <li><hr class="dropdown-divider"></li>
@@ -86,7 +86,7 @@
           </li>
 
         </ul>
-        <form action="{% url 'buscar-camion' %}" class="d-flex">
+        <form action="{% url 'Camion-search' %}" class="d-flex">
           <input class="form-control me-2" name= "criterio" type="search" placeholder="Buscar" aria-label="Buscar">
           <button class="btn btn-outline-success" type="submit">Buscar</button>
         </form>

@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from OnlyTrucks.views import index, mostrar_Camion, agregar_Camion, buscar_Camion, Resultado_de_Camion, mostrar_Remolque, agregar_Remolque, mostrar_Consesionaria, agregar_Consesionaria, Resultado_de_Remolque,Resultado_de_Consesionaria 
+from OnlyTrucks.views import index, mostrar_Camion, agregar_Camion, buscar_Camion, Resultado_de_Camion, mostrar_Remolque, agregar_Remolque, mostrar_Consesionaria, agregar_Consesionaria, Resultado_de_Remolque,Resultado_de_Consesionaria, CamionList, CamionDetail, CamionUpdate, CamionDelete, CamionCreate, CamionSearch
 
 urlpatterns = [
    path('admin/', admin.site.urls),
@@ -30,4 +30,10 @@ urlpatterns = [
    path('Concesionario/agregar', agregar_Consesionaria, name="Agregar-Consesionaria"),
    path('Resultado de BusquedaR/', Resultado_de_Remolque, name="Resultado BusquedaR"), 
    path('Resultado de BusquedaC/', Resultado_de_Consesionaria, name="Resultado BusquedaC"),
+   path('Camion/list', CamionList.as_view() , name="Camion-list"),
+   path('Camion/<pk>/detail', CamionDetail.as_view() , name="Camion-detail"),
+   path('Camion/<pk>/update', CamionUpdate.as_view() , name="Camion-update"),
+   path('Camion/<pk>/delete', CamionDelete.as_view() , name="Camion-delete"),
+   path('Camion/create', CamionCreate.as_view() , name="Camion-create"),
+   path('Camion/search', CamionSearch.as_view() , name="Camion-search"),
 ]
