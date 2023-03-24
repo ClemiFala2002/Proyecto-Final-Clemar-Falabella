@@ -1,0 +1,11 @@
+{% extends 'OnlyTrucks/base.html' %}
+{% load static %}
+
+{% block main %}
+<ul>
+ <li>{{Remolque.id}} - {{ Remolque.Modelo_de_su_Acoplado }}
+    <a href="{% url 'Remolques-update' Remolque.id %}">actualizar</a>
+    <a href="{% url 'Remolques-delete' Remolque.id %}">borrar</a>
+ </li>
+</ul>
+{% endblock %}  

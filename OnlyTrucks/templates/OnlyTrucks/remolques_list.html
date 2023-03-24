@@ -1,0 +1,16 @@
+{% extends 'OnlyTrucks/base.html' %}
+{% load static %}
+
+{% block main %}
+
+<ul>
+    {% for Remolques in Remolques %}
+    <li>{{Remolques.id}} - {{ Remolques.Modelo_de_su_Acoplado }} - {{Remolques.Precio}}
+        <a href="{% url 'Remolques-detail' Remolques.id %}">detalle</a>
+        <a href="{% url 'Remolques-update' Remolques.id %}">actualizar</a>
+        <a href="{% url 'Remolques-delete' Remolques.id %}">borrar</a>
+    </li>
+    {% endfor %}
+    </ul>
+    
+    {% endblock %}   
