@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from OnlyTrucks.models import Camion, Remolques, Concesionaria
-from OnlyTrucks.forms import CamionForm, RemolquesForm, ConsesionariaForm
+from OnlyTrucks.models import Camion, Remolques
+from OnlyTrucks.forms import CamionForm, RemolquesForm
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 

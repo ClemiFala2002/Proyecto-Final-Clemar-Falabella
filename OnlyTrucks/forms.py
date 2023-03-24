@@ -1,5 +1,5 @@
 from django import forms
-from OnlyTrucks.models import Camion, Remolques, Concesionaria
+from OnlyTrucks.models import Camion, Remolques
 
 class CamionForm(forms.ModelForm):
     class Meta:
@@ -12,7 +12,4 @@ class RemolquesForm(forms.ModelForm):
         fields= '__all__'
         
         
-class ConsesionariaForm(forms.ModelForm):
-    class Meta:
-        model=Concesionaria
-        fields= '__all__'       
+  
