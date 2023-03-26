@@ -3,6 +3,8 @@ from OnlyTrucks.models import Camion, Remolques
 from OnlyTrucks.forms import CamionForm, RemolquesForm
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.contrib.auth.views import LoginView
+from django.contrib.auth.forms import UserCreationForm
 
 def index(request):
     return render(request, "OnlyTrucks/index.html")
@@ -59,3 +61,21 @@ class RemolqueCreate(CreateView):
     model = Remolques    
     success_url = reverse_lazy("Remolques-list") 
     fields = '__all__'    
+    
+def buscar_post(request):
+    criterio= request.GET.get("criterio")
+    context = {
+        "CamionesB":Camion.objects.filter(Modelo_de_su_Camion__icontains=criterio).all(),
+        "RemolquesB":Remolques.objects.filter(Modelo_de_su_Acoplado__icontains=criterio).all(),
+        
+    }
+    
+    return render(request, "OnlyTrucks/Resultado_de_Busqueda.html", context) 
+
+class Login(LoginView):
+    next_page = reverse_lazy("index") 
+    
+class SignUp(CreateView):
+    form_class = UserCreationForm
+    template_name = 'registration/signup.html'
+    success_url = reverse_lazy('index')        

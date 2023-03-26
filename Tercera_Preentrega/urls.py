@@ -15,7 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from OnlyTrucks.views import index, CamionList, CamionDetail, CamionUpdate, CamionDelete, CamionCreate, CamionSearch, RemolqueList, RemolqueDetail, RemolqueUpdate, RemolqueDelete, RemolqueCreate
+from OnlyTrucks.views import (index, CamionList, CamionDetail, CamionUpdate, CamionDelete, CamionCreate, CamionSearch, 
+                              RemolqueList, RemolqueDetail, RemolqueUpdate, RemolqueDelete, RemolqueCreate, buscar_post, Login,
+                              SignUp)
 
 urlpatterns = [
    path('admin/', admin.site.urls),
@@ -31,4 +33,8 @@ urlpatterns = [
    path('Acoplados/<pk>/update', RemolqueUpdate.as_view() , name="Remolques-update"),
    path('Acoplados/<pk>/delete', RemolqueDelete.as_view() , name="Remolques-delete"),
    path('Acoplados/create', RemolqueCreate.as_view() , name="Remolques-create"),
+   path('Camiones/buscar', buscar_post, name="buscar-camion"),
+   path('Login/', Login.as_view() , name="login"),
+   path('Signup/', SignUp.as_view() , name="signup"),
+   
 ]
