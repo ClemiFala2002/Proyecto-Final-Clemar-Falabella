@@ -9,8 +9,10 @@
 {% for Camion in CamionesB %}
 <li>{{Camion.id}} - {{ Camion.Modelo_de_su_Camion }} - {{Camion.Año_de_Fabricacion}} - {{Camion.Precio}}
     <a href="{% url 'Camion-detail' Camion.id %}">detalle</a>
+    {% if user.is_authenticated and user.id == Camion.Vendedor.id%}
     <a href="{% url 'Camion-update' Camion.id %}">actualizar</a>
     <a href="{% url 'Camion-delete' Camion.id %}">borrar</a>
+    {% endif %}
 </li>
 {% endfor %}
 </ul>
@@ -19,8 +21,10 @@
 {% for Remolques in RemolquesB %}
 <li>{{Remolques.id}} - {{ Remolques.Modelo_de_su_Acoplado }} - {{Remolques.Año_de_Fabricacion}} - {{Remolques.Precio}}
     <a href="{% url 'Remolques-detail' Remolques.id %}">detalle</a>
+    {% if user.is_authenticated and user.id == Remolques.Vendedor.id%}
     <a href="{% url 'Remolques-update' Remolques.id %}">actualizar</a>
     <a href="{% url 'Remolques-delete' Remolques.id %}">borrar</a>
+    {% endif %}
 </li>
 {% endfor %}
 </ul>

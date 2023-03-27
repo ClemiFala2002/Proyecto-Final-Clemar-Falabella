@@ -3,8 +3,9 @@ from OnlyTrucks.models import Camion, Remolques
 from OnlyTrucks.forms import CamionForm, RemolquesForm
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from django.contrib.auth.views import LoginView
+from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 def index(request):
     return render(request, "OnlyTrucks/index.html")
@@ -17,16 +18,27 @@ class CamionDetail(DetailView):
     model = Camion 
     context_object_name = "Camion"   
     
-class CamionUpdate(UpdateView):
+class CamionUpdate(LoginRequiredMixin,UserPassesTestMixin,UpdateView):
     model = Camion 
     success_url = reverse_lazy("Camion-list")
     fields = '__all__' 
     
-class CamionDelete(DeleteView):
+    def test_func(self):
+       user_id= self.request.user.id 
+       camion_id= self.kwargs.get("pk")
+       return Camion.objects.filter(Vendedor=user_id, id= camion_id).exists() 
+        
+    
+class CamionDelete(LoginRequiredMixin,UserPassesTestMixin,DeleteView):
     model = Camion
     success_url = reverse_lazy("Camion-list")
     
-class CamionCreate(CreateView):
+    def test_func(self):
+       user_id= self.request.user.id 
+       camion_id= self.kwargs.get("pk")
+       return Camion.objects.filter(Vendedor=user_id, id= camion_id).exists() 
+    
+class CamionCreate(LoginRequiredMixin,CreateView):
     model = Camion    
     success_url = reverse_lazy("Camion-list") 
     fields = '__all__'
@@ -48,16 +60,26 @@ class RemolqueDetail(DetailView):
     model = Remolques 
     context_object_name = "Remolque"      
     
-class RemolqueUpdate(UpdateView):
+class RemolqueUpdate(LoginRequiredMixin,UserPassesTestMixin,UpdateView):
     model = Remolques
     success_url = reverse_lazy("Remolques-list")
     fields = '__all__' 
     
-class RemolqueDelete(DeleteView):
+    def test_func(self):
+       user_id= self.request.user.id 
+       remolque_id= self.kwargs.get("pk")
+       return Remolques.objects.filter(Vendedor=user_id, id= remolque_id).exists() 
+    
+class RemolqueDelete(LoginRequiredMixin,UserPassesTestMixin,DeleteView):
     model = Remolques
     success_url = reverse_lazy("Remolques-list")
     
-class RemolqueCreate(CreateView):
+    def test_func(self):
+       user_id= self.request.user.id 
+       remolque_id= self.kwargs.get("pk")
+       return Remolques.objects.filter(Vendedor=user_id, id= remolque_id).exists()  
+    
+class RemolqueCreate(LoginRequiredMixin,CreateView):
     model = Remolques    
     success_url = reverse_lazy("Remolques-list") 
     fields = '__all__'    
@@ -78,4 +100,18 @@ class Login(LoginView):
 class SignUp(CreateView):
     form_class = UserCreationForm
     template_name = 'registration/signup.html'
-    success_url = reverse_lazy('index')        
+    success_url = reverse_lazy('index')    
+    
+class Logout(LogoutView):
+    template_name = "registration/logout.html"     
+    
+       
+class CamionMyList(LoginRequiredMixin,CamionList):
+    def get_queryset(self):
+        return Camion.objects.filter(Vendedor=self.request.user.id).all()
+    
+class RemolqueMyList(LoginRequiredMixin,RemolqueList):
+    def get_queryset(self):
+        return Remolques.objects.filter(Vendedor=self.request.user.id).all()    
+        
+        

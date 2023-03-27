@@ -2,10 +2,15 @@
 {% load static %}
 
 {% block main %}
+
+<h1>{{ Remolque.Modelo_de_su_Acoplado }}</h1>
+
 <ul>
  <li>{{Remolque.id}} - {{ Remolque.Modelo_de_su_Acoplado }}
+    {% if user.is_authenticated and user.id == Remolques.Vendedor.id %}
     <a href="{% url 'Remolques-update' Remolque.id %}">actualizar</a>
     <a href="{% url 'Remolques-delete' Remolque.id %}">borrar</a>
+    {% endif %}
  </li>
 </ul>
 {% endblock %}  

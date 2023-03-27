@@ -61,9 +61,13 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav me-auto mb-2 mb-md-0">
+          {% if user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{%url 'logout' %}">{{ user.username}} /Cerrar Sesion</a>
+          </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Subir
+              Publicar
             </a>
            
              <ul class="dropdown-menu dropdown-menu-dark rounded-3 mx-0 border-0 shadow w-220px">
@@ -87,17 +91,57 @@
             
           </li> 
 
+        </li> 
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Mis Publicaciones
+          </a>
+         
+           <ul class="dropdown-menu dropdown-menu-dark rounded-3 mx-0 border-0 shadow w-220px">
+              <li><a class="dropdown-item rounded-2" href="{%url 'camionmylist' %}">Camiones</a></li>
+              <li><a class="dropdown-item rounded-2" href="{%url 'remolquemylist'%}">Acoplados</a></li>
+            
+            </ul>
+          
+        </li> 
+
         
-         <li class="nav-item" style="display: none;">
-            <a class="nav-link active" aria-current="page" href="">Camiones</a>
-          </li>
-          <li class="nav-item"  style="display: none;">
-            <a class="nav-link" href="">Acoplados</a>
+        
+          <li class="nav-item" style="display: none;">
+            <a class="nav-link" href="{%url 'camionmylist'%}">Mis Publicaciones</a>
           </li>
           <li class="nav-item" style="display: none;">
             <a class="nav-link" href="">Concesionarios</a>
           </li>
 
+          {% else %}
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Ingresar
+            </a>
+           
+             <ul class="dropdown-menu dropdown-menu-dark rounded-3 mx-0 border-0 shadow w-220px">
+                <li><a class="dropdown-item rounded-2" href="{%url 'login' %}">Iniciar Sesion</a></li>
+                <li><a class="dropdown-item rounded-2" href="{%url 'signup'%}">Registrarse</a></li>
+              
+              </ul>
+            
+          </li> 
+
+        </li> 
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Ver Catalogo
+          </a>
+         
+           <ul class="dropdown-menu dropdown-menu-dark rounded-3 mx-0 border-0 shadow w-220px">
+              <li><a class="dropdown-item rounded-2" href="{%url 'Camion-list' %}">Camiones</a></li>
+              <li><a class="dropdown-item rounded-2" href="{%url 'Remolques-list'%}">Acoplados</a></li>
+            
+            </ul>
+          
+        </li> 
+          {% endif %}
         </ul>
         <form action="{% url 'buscar-camion' %}" class="d-flex">
           <input class="form-control me-2" name= "criterio" type="search" placeholder="Buscar" aria-label="Buscar">

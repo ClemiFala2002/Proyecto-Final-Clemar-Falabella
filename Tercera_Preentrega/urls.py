@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from OnlyTrucks.views import (index, CamionList, CamionDetail, CamionUpdate, CamionDelete, CamionCreate, CamionSearch, 
                               RemolqueList, RemolqueDetail, RemolqueUpdate, RemolqueDelete, RemolqueCreate, buscar_post, Login,
-                              SignUp)
+                              SignUp,Logout, CamionMyList, RemolqueMyList)
 
 urlpatterns = [
    path('admin/', admin.site.urls),
@@ -36,5 +36,10 @@ urlpatterns = [
    path('Camiones/buscar', buscar_post, name="buscar-camion"),
    path('Login/', Login.as_view() , name="login"),
    path('Signup/', SignUp.as_view() , name="signup"),
+   path('Logout/', Logout.as_view() , name="logout"),
+   path('Camion/list/My', CamionMyList.as_view() , name="camionmylist"),
+   path('Acoplados/list/My', RemolqueMyList.as_view() , name="remolquemylist"),
+   
+   
    
 ]

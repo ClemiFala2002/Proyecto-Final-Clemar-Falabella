@@ -3,12 +3,16 @@
 
 {% block main %}
 
+<h1>Catalogo de Acoplados</h1>
+
 <ul>
     {% for Remolques in Remolques %}
     <li>{{Remolques.id}} - {{ Remolques.Modelo_de_su_Acoplado }} - {{Remolques.Precio}}
         <a href="{% url 'Remolques-detail' Remolques.id %}">detalle</a>
+        {% if user.is_authenticated and user.id == Remolques.Vendedor.id%}
         <a href="{% url 'Remolques-update' Remolques.id %}">actualizar</a>
         <a href="{% url 'Remolques-delete' Remolques.id %}">borrar</a>
+        {% endif %}
     </li>
     {% endfor %}
     </ul>
