@@ -6,12 +6,11 @@
 
 <h1>"{{ Camion.Modelo_de_su_Camion }}"</h1>
 
-<ul>
- <li>{{Camion.id}} - {{ Camion.Modelo_de_su_Camion }}
-    {% if user.is_authenticated and user.id == Camion.Vendedor.id%}
-    <a href="{% url 'Camion-update' Camion.id %}">actualizar</a>
-    <a href="{% url 'Camion-delete' Camion.id %}">borrar</a>
-    {% endif %}
- </li>
-</ul>
+<div class="d-flex justify-content-center">
+   <div class="col col-8" style="text-align: center;">
+       <h1 class="mt-5">{{ Camion.Modelo_de_su_Camion }}</h1>
+       <p><img height="256px" src="{{Camion.image_url}}"></p>
+       <p class="lead">{{ Camion.Descripcion}}</p>
+   </div>
+</div>
 {% endblock %}  
