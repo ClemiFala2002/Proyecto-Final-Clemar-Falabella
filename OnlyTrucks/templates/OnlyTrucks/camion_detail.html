@@ -11,6 +11,10 @@
        <h1 class="mt-5">{{ Camion.Modelo_de_su_Camion }}</h1>
        <p><img height="256px" src="{{Camion.image_url}}"></p>
        <p class="lead">{{ Camion.Descripcion}}</p>
+       {% if user.is_authenticated and user.id == Camion.Vendedor.id%} 
+        <a class="btn btn-primary" href="{% url 'Camion-update' Camion.id %}">actualizar</a>
+        <a class="btn btn-danger" href="{% url 'Camion-delete' Camion.id %}">borrar</a>
+        {% endif %}
    </div>
 </div>
 {% endblock %}  

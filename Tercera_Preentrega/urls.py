@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from OnlyTrucks.views import (index, CamionList, CamionDetail, CamionUpdate, CamionDelete, CamionCreate, CamionSearch, 
                               RemolqueList, RemolqueDetail, RemolqueUpdate, RemolqueDelete, RemolqueCreate, buscar_post, Login,
-                              SignUp,Logout, CamionMyList, RemolqueMyList)
+                              SignUp,Logout, CamionMyList, RemolqueMyList, ProfileCreate, ProfileUpdate)
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -41,6 +41,8 @@ urlpatterns = [
    path('Logout/', Logout.as_view() , name="logout"),
    path('Camion/list/My', CamionMyList.as_view() , name="camionmylist"),
    path('Acoplados/list/My', RemolqueMyList.as_view() , name="remolquemylist"),
+   path('Profile/create', ProfileCreate.as_view() , name="Profile-create"),
+   path('Profile/<pk>/update', ProfileUpdate.as_view() , name="Profile-update"),
    
    
    

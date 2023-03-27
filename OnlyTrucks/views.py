@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from OnlyTrucks.models import Camion, Remolques
+from OnlyTrucks.models import Camion, Remolques, Profile
 from OnlyTrucks.forms import CamionForm, RemolquesForm
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
@@ -112,6 +112,26 @@ class CamionMyList(LoginRequiredMixin,CamionList):
     
 class RemolqueMyList(LoginRequiredMixin,RemolqueList):
     def get_queryset(self):
-        return Remolques.objects.filter(Vendedor=self.request.user.id).all()    
+        return Remolques.objects.filter(Vendedor=self.request.user.id).all()  
+    
+    
+class ProfileCreate(CreateView):
+    model = Profile  
+    success_url = reverse_lazy('index') 
+    fields = {'avatar','Facebook','Instagram','Twitter'}   
+    
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
         
         
+class ProfileUpdate(UserPassesTestMixin,UpdateView):
+    model = Profile
+    success_url = reverse_lazy('index')
+    fields = {'avatar','Facebook','Instagram','Twitter'}
+    
+    def test_func(self):
+        return Profile.objects.filter(user=self.request.user).exists()
+    
+    
+            
