@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from OnlyTrucks.models import Camion, Remolques, Profile
+from OnlyTrucks.models import Camion, Remolques, Profile, Mensaje
 from OnlyTrucks.forms import CamionForm, RemolquesForm
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
@@ -9,6 +9,9 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 def index(request):
     return render(request, "OnlyTrucks/index.html")
+
+def about(request):
+    return render(request, "OnlyTrucks/about.html")
 
 class CamionList(ListView):
     model = Camion
@@ -132,6 +135,30 @@ class ProfileUpdate(UserPassesTestMixin,UpdateView):
     
     def test_func(self):
         return Profile.objects.filter(user=self.request.user).exists()
+    
+    
+class MensajeCreate(CreateView):
+    model = Mensaje
+    success_url = reverse_lazy('mensaje-create')
+    fields = '__all__'
+
+
+class MensajeDelete(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = Mensaje
+    context_object_name = "mensaje"
+    success_url = reverse_lazy("mensaje-list")
+
+    def test_func(self):
+        return Mensaje.objects.filter(destinatario=self.request.user).exists()
+    
+
+class MensajeList(LoginRequiredMixin, ListView):
+    model = Mensaje
+    context_object_name = "mensajes"
+
+    def get_queryset(self):
+        import pdb; pdb.set_trace
+        return Mensaje.objects.filter(destinatario=self.request.user).all()    
     
     
             

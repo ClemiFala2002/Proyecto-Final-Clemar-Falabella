@@ -4,13 +4,17 @@
 
 {% block main %}
 
-<h1>"{{ Camion.Modelo_de_su_Camion }}"</h1>
+
 
 <div class="d-flex justify-content-center">
    <div class="col col-8" style="text-align: center;">
        <h1 class="mt-5">{{ Camion.Modelo_de_su_Camion }}</h1>
        <p><img height="256px" src="{{Camion.image_url}}"></p>
        <p class="lead">{{ Camion.Descripcion}}</p>
+       <p class="lead">Precio: {{ Camion.Precio}}</p>
+       <p class="lead">Fecha de Publicacion: {{ Camion.Publicado_el}}</p>
+       <p class="lead">Vendedor: {{ Camion.Vendedor}}</p>
+       <a class="btn btn-primary" href="{% url 'mensaje-create'%}">Enviar Mensaje</a>
        {% if user.is_authenticated and user.id == Camion.Vendedor.id%} 
         <a class="btn btn-primary" href="{% url 'Camion-update' Camion.id %}">actualizar</a>
         <a class="btn btn-danger" href="{% url 'Camion-delete' Camion.id %}">borrar</a>
