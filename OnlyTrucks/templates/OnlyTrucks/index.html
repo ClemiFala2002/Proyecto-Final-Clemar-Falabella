@@ -57,21 +57,22 @@
     <!-- Three columns of text below the carousel -->
     <div class="row">
 
-      {% for Camion in Camiones %}
+    {% for Camion in Camiones %}
       <div class="col-lg-4">
         <img src="{{Camion.image_url}}" height="144" width="144">
         <h2 style="color: white">Camiones Usados</h2>
         <p style="color: white">Venda su Camion pulsando aqui</p>
         <p><a class="btn btn-secondary" href="{%url 'Camion-create'%}">Vender »</a></p>
       </div><!-- /.col-lg-4 -->
-      {% endfor %}
-      <div class="col-lg-4">
-        <img src="{% static 'OnlyTrucks/assets/acoplado-3ejes-mixto.jpg' %}" height="144" width="144">
+    {% endfor %}
+    {% for Remolques in Remolques %}
+     <div class="col-lg-4">
+        <img src="{{Remolque.image_url}}" height="144" width="144">
         <h2 style="color: white">Acoplados Usados</h2>
         <p style="color: white">Venda su acoplado pulsando aqui</p>
         <p><a class="btn btn-secondary" href="{%url 'Remolques-create'%}">Vender »</a></p>
       </div><!-- /.col-lg-4 -->
-      
+    {% endfor %}
     </div><!-- /.row -->
 
 
