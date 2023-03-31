@@ -8,7 +8,9 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 def index(request):
-    return render(request, "OnlyTrucks/index.html")
+    camiones = Camion.objects.all().order_by("-Publicado_el")[:6]
+    remolques = Remolques.objects.all().order_by("-Publicado_el")[:6]
+    return render(request, "OnlyTrucks/index.html",{"camiones":camiones,"remolques":remolques})
 
 def about(request):
     return render(request, "OnlyTrucks/about.html")

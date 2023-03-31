@@ -10,13 +10,12 @@
     <h1> Aun no hay Camiones a la Venta </h1>
     {% endif %}
     {% for Camion in Camiones %}
-    <li>{{Camion.id}} - {{ Camion.Modelo_de_su_Camion }} - {{Camion.Precio}}
-        <a href="{% url 'Camion-detail' Camion.id %}">detalle</a>
+    <li>{{Camion.id}} - {{ Camion.Modelo_de_su_Camion }} - {{Camion.Precio}}</li>
+    <a  class="btn btn-info" href="{% url 'Camion-detail' Camion.id %}">Detalle</a>
         {% if user.is_authenticated and user.id == Camion.Vendedor.id%} 
-        <a href="{% url 'Camion-update' Camion.id %}">actualizar</a>
-        <a href="{% url 'Camion-delete' Camion.id %}">borrar</a>
+        <a  class="btn btn-success" href="{% url 'Camion-update' Camion.id %}">Editar</a>
+        <a class="btn btn-danger" href="{% url 'Camion-delete' Camion.id %}">Borrar</a>
         {% endif %}
-    </li>
     {% endfor %}
     </ul>
     

@@ -9,7 +9,7 @@
        <h1 class="mt-5">{{ Remolque.Modelo_de_su_Acoplado }}</h1>
        <p><img height="256px" src="{{Remolque.imagen_url}}"></p>
        <p class="lead">{{ Remolque.Descripcion}}</p>
-       <p class="lead">Precio: {{ Remolque.Precio}}</p>
+       <p class="lead">Precio: {{ Remolque.Precio}} Modelo: {{Remolque.Año_de_Fabricacion}}</p>
        <p class="lead">Fecha de Publicacion: {{ Remolque.Publicado_el}}</p>
        <p class="lead">Vendedor: {{ Remolque.Vendedor}}</p>
        <a class="btn btn-primary" href="{% url 'mensaje-create'%}">Enviar Mensaje</a>

@@ -56,7 +56,7 @@
   <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
     <div class="container-fluid">
       {%if user.profile.avatar_url %}
-        <img src="{{user.profile.image_url}}" height="144" width="144">
+        <img src="{{user.profile.avatar_url}}" height="60" width="60">
       {% else %}
       <a class="navbar-brand" href="{%url 'index' %}">OnlyTrucks</a>
       {% endif %}
@@ -66,6 +66,7 @@
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav me-auto mb-2 mb-md-0">
           {% if user.is_authenticated %}
+
           
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -148,6 +149,12 @@
             
           </li> 
 
+          {%if user.profile.avatar_url %}
+
+          <li class="nav-item">
+            <a class="nav-link" href="{%url 'index'%}">Inicio</a>
+          </li>
+          {% endif %}
           {% else %}
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">

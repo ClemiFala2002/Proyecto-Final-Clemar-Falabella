@@ -42,6 +42,7 @@ body {
 .marketing .col-lg-4 {
   margin-bottom: 1.5rem;
   text-align: center;
+  background-color:red ;
 }
 .marketing h2 {
   font-weight: 400;
@@ -51,6 +52,10 @@ body {
   margin-right: .75rem;
   margin-left: .75rem;
 }
+
+
+
+
 /* rtl:end:ignore */
 
 

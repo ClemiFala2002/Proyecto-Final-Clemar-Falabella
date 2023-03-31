@@ -10,13 +10,12 @@
     <h1> Aun no hay Acoplados a la Venta </h1>
     {% endif %}
     {% for Remolques in Remolques %}
-    <li>{{Remolques.id}} - {{ Remolques.Modelo_de_su_Acoplado }} - {{Remolques.Precio}}
-        <a href="{% url 'Remolques-detail' Remolques.id %}">detalle</a>
+    <li>{{Remolques.id}} - {{ Remolques.Modelo_de_su_Acoplado }} - {{Remolques.Precio}}</li>
+    <a class="btn btn-info"  href="{% url 'Remolques-detail' Remolques.id %}">Detalle</a>
         {% if user.is_authenticated and user.id == Remolques.Vendedor.id%}
-        <a href="{% url 'Remolques-update' Remolques.id %}">actualizar</a>
-        <a href="{% url 'Remolques-delete' Remolques.id %}">borrar</a>
+        <a class="btn btn-success" href="{% url 'Remolques-update' Remolques.id %}">Editar</a>
+        <a class="btn btn-danger" href="{% url 'Remolques-delete' Remolques.id %}">Borrar</a>
         {% endif %}
-    </li>
     {% endfor %}
     </ul>
     
